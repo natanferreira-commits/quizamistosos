@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { config } from "./config";
 import { enviarEvento, marcarWhatsapp, salvarBilhete } from "./lib/sb";
 
@@ -438,6 +438,12 @@ function Loading({ onDone, onHome }) {
   const dur = Math.max(0.3, segundos) * 1000;
   const etapa = etapas[Math.min(etapas.length - 1, Math.floor((p / 100) * etapas.length))];
 
+  // Ref pra onDone não invalidar o effect a cada render do pai
+  const onDoneRef = useRef(onDone);
+  useEffect(() => {
+    onDoneRef.current = onDone;
+  });
+
   useEffect(() => {
     const inicio = Date.now();
     let fim = null;
@@ -446,14 +452,14 @@ function Loading({ onDone, onHome }) {
       setP(pct);
       if (pct >= 100) {
         clearInterval(t);
-        fim = setTimeout(onDone, 200);
+        fim = setTimeout(() => onDoneRef.current && onDoneRef.current(), 200);
       }
     }, 40);
     return () => {
       clearInterval(t);
       if (fim) clearTimeout(fim);
     };
-  }, [dur, onDone]);
+  }, [dur]);
 
   return (
     <div className="page">
