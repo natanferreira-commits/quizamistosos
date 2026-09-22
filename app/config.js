@@ -7,7 +7,7 @@ export const config = {
   // >>> WhatsApp que recebe o bilhete (só dígitos, com DDI+DDD) <<<
   whatsappNumero: "559180194075",
 
-  whatsappMensagem: "Quero validar meu palpite #{codigo}\n\nRodada: {rodada}\n\n{palpites}",
+  whatsappMensagem: "Quero validar meu palpite #{codigo}",
 
   // >>> SUPABASE — deixa vazio até criar o projeto e rodar supabase.sql <<<
   // (Sem Supabase, admin fica desligado e bilhetes não são salvos)
