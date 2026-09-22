@@ -155,6 +155,23 @@ h1 .hl {
   background-size: cover;
   background-position: center center;
 }
+/* Compacta o hero: textos + CTA mais próximos, foto ocupa menos vertical */
+.hero-img.recorte {
+  min-height: calc(100dvh - 72px);
+}
+.hero-img.recorte .hero-foto {
+  top: 4%;
+  height: 52%;
+}
+.hero-img.recorte .hero-top {
+  top: 1.5%;
+}
+.hero-img.recorte .hero-copy {
+  bottom: calc(var(--sticky-h) - 4px);
+}
+.hero-img.recorte .hero-copy h1 {
+  margin-bottom: 0;
+}
 /* funde a base da imagem com o fundo da página */
 .hero-img::after {
   content: "";
