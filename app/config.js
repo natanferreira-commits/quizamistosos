@@ -5,8 +5,7 @@
 
 export const config = {
   // >>> WhatsApp que recebe o bilhete (só dígitos, com DDI+DDD) <<<
-  // TROCAR quando decidir de qual afiliado será este bolão
-  whatsappNumero: "5599999999999",
+  whatsappNumero: "559180194075",
 
   whatsappMensagem: "Quero validar meu palpite #{codigo}",
 
