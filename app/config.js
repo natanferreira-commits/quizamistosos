@@ -9,11 +9,9 @@ export const config = {
 
   whatsappMensagem: "Quero validar meu palpite #{codigo}",
 
-  // >>> SUPABASE — deixa vazio até criar o projeto e rodar supabase.sql <<<
-  // (Sem Supabase, admin fica desligado e bilhetes não são salvos)
   supabase: {
-    url: "",
-    anonKey: "",
+    url: "https://nhquytiuzezckqmbevif.supabase.co",
+    anonKey: "sb_publishable_CAgOTV9H6Z-z4qvimwV3Kg_ZSudeqrt",
   },
 
   marca: "Bolão dos Amistosos",
