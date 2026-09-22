@@ -932,10 +932,12 @@ h1 .hl {
 .hero-bandeiras img:nth-child(9)  { bottom: 100px; right: 22%; transform: rotate(-7deg); }
 .hero-bandeiras img:nth-child(10) { bottom: 94px; right: 6%;  transform: rotate(4deg); }
 
+/* Sobe pra frente das bandeiras, MANTENDO o position: absolute do layout original */
 .hero-img.com-bandeiras .hero-top,
-.hero-img.com-bandeiras .hero-copy,
+.hero-img.com-bandeiras .hero-copy {
+  z-index: 2;
+}
 .hero-img.com-bandeiras .hero-foto {
-  position: relative;
   z-index: 2;
 }
 @media (max-width: 480px) {
