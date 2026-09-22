@@ -51,8 +51,9 @@ export const config = {
   marquee: ["Bolão dos Amistosos", "Data FIFA", "R$ 500 no Pix", "5 jogos • 10 palpites", "Quinta-feira", "Grátis"],
 
   landing: {
-    heroImage: "/hero.webp",
+    heroImage: "",
     heroModo: "recorte",
+    heroBandeiras: true,   // mostra bandeiras dos países da rodada no hero
     label: "Bolão dos Amistosos • Data FIFA",
     titulo: "*R$ 500* pra quem cravar a rodada",
     subtitulo: "Dois palpites por jogo dos amistosos da quinta. Cravou os dez, o Pix é seu.",

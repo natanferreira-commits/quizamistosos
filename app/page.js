@@ -258,9 +258,17 @@ function Landing({ onStart }) {
       <Marquee />
       <Header right={rodada.nome} />
 
-      <section className={`hero-img${landing.heroImage ? " com-imagem" : ""}${recorte ? " recorte" : ""}`} style={heroStyle}>
+      <section className={`hero-img${landing.heroImage ? " com-imagem" : ""}${recorte ? " recorte" : ""}${landing.heroBandeiras ? " com-bandeiras" : ""}`} style={heroStyle}>
         {recorte && landing.heroImage && <div className="hero-foto" style={fotoStyle} aria-hidden="true" />}
         <Particulas />
+        {landing.heroBandeiras && (
+          <div className="hero-bandeiras" aria-hidden="true">
+            {rodada.jogos.flatMap((j, i) => [
+              <img key={`c${i}`} src={j.escudoCasa} alt="" />,
+              <img key={`f${i}`} src={j.escudoFora} alt="" />,
+            ])}
+          </div>
+        )}
         <div className="hero-top">
           {landing.label.split("•").map((l, i) => (
             <span className={i === 0 ? "hero-top-titulo" : "hero-top-sub"} key={i}>
