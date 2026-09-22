@@ -1,0 +1,334 @@
+/* ============================================================
+   /admin — painel. Marca de dado = dourado; texto sempre em tokens de texto.
+   ============================================================ */
+.adm {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+  font-size: 14px;
+}
+.adm h1 {
+  font-size: 22px;
+  line-height: 1.1;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+.adm h2 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.adm .mut {
+  color: var(--mut);
+}
+.adm-nota {
+  color: var(--mut);
+  font-size: 12.5px;
+}
+.adm code {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 12px;
+}
+
+/* topo + filtros (uma linha só, acima de tudo) */
+.adm-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.adm-filtros {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.adm-filtros label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--mut);
+}
+.adm select,
+.adm input[type="text"],
+.adm input[type="password"],
+.adm-filtros input:not([type="checkbox"]) {
+  background: var(--card);
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  color: var(--text);
+  font: inherit;
+  padding: 8px 10px;
+  min-height: 36px;
+}
+.adm button {
+  background: var(--card);
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 14px;
+  min-height: 36px;
+  cursor: pointer;
+}
+.adm button:hover:not(:disabled) {
+  border-color: var(--gold-2);
+}
+.adm button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.adm-check input {
+  accent-color: var(--gold);
+}
+.adm-erro {
+  margin: 12px 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 122, 122, 0.45);
+  border-radius: 8px;
+  color: #ffb3b3;
+  font-size: 13px;
+}
+.adm-erro::before {
+  content: "⚠ ";
+}
+
+/* login */
+.adm-login {
+  max-width: 360px;
+  margin: 14vh auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.adm-login p {
+  color: var(--mut);
+}
+.adm-login button {
+  background: var(--gold);
+  color: #140f02;
+  border-color: var(--gold);
+}
+
+/* tiles */
+.adm-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.adm-tile {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+}
+.adm-tile.destaque {
+  border-color: var(--gold-2);
+}
+.adm-tile-label {
+  font-size: 12.5px;
+  color: var(--mut);
+}
+.adm-tile-valor {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-top: 4px;
+  color: var(--text); /* número grande: figuras proporcionais, tinta de texto */
+}
+.adm-tile.destaque .adm-tile-valor {
+  font-size: 48px;
+}
+.adm-tile-sub {
+  font-size: 12.5px;
+  color: var(--mut);
+  margin-top: 2px;
+}
+
+/* cards */
+.adm-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+/* funil: barras horizontais, um matiz, valor ao lado em tinta de texto */
+.adm-funil {
+  margin-top: 14px;
+}
+.adm-funil-head,
+.adm-funil-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 210px) 1fr 70px 70px 110px;
+  align-items: center;
+  gap: 12px;
+}
+.adm-funil-head {
+  font-size: 11.5px;
+  color: var(--mut-2);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+}
+.adm-funil-head span:first-child {
+  text-align: left;
+}
+.adm-funil-row {
+  padding: 7px 0;
+  border-bottom: 1px solid var(--line);
+}
+.adm-funil-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+.adm-funil-nome {
+  font-size: 13px;
+}
+.adm-funil-barra {
+  display: block;
+  height: 16px;
+}
+.adm-funil-fill {
+  display: block;
+  height: 100%;
+  min-width: 2px;
+  background: var(--gold);
+  border-radius: 0 4px 4px 0; /* quadrado na base, arredondado na ponta do dado */
+  transition: width 0.3s ease;
+}
+.adm-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.adm-num.alerta {
+  color: #ffb3b3;
+  font-weight: 700;
+}
+
+/* tabelas */
+.adm-tabela-wrap {
+  overflow-x: auto;
+  margin-top: 12px;
+}
+.adm-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.adm-tabela th {
+  text-align: left;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--mut-2);
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.adm-tabela td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.adm-tabela .dir {
+  text-align: right;
+}
+.adm-tabela tr.aberta td {
+  border-bottom-color: transparent;
+}
+.adm-codigo {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+.adm-vazio {
+  text-align: center;
+  color: var(--mut);
+  padding: 24px 10px !important;
+}
+.adm-link {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  color: var(--mut) !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500 !important;
+}
+.adm-detalhe td {
+  background: rgba(255, 255, 255, 0.02);
+  white-space: normal;
+}
+.adm-detalhe ul {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+.adm-detalhe li {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(100px, auto) 90px;
+  gap: 12px;
+  align-items: baseline;
+}
+.adm-status {
+  font-size: 12px;
+  color: var(--mut);
+  text-align: right;
+}
+.adm-status.ok {
+  color: #8fe0b0;
+}
+.adm-status.nok {
+  color: #ffb3b3;
+}
+
+/* gabarito */
+.adm-gabarito {
+  margin: 12px 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.adm-gabarito summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+}
+.adm-gab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+  margin: 12px 0 8px;
+}
+.adm-gab-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--mut);
+}
+
+@media (max-width: 640px) {
+  .adm-funil-head,
+  .adm-funil-row {
+    grid-template-columns: 1fr 60px 60px;
+  }
+  .adm-funil-barra,
+  .adm-funil-head span:nth-child(2) {
+    grid-column: 1 / -1;
+    order: 5;
+  }
+  .adm-funil-head span:nth-child(5),
+  .adm-funil-row span:nth-child(5) {
+    display: none;
+  }
+}
