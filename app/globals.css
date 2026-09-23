@@ -160,8 +160,8 @@ h1 .hl {
   min-height: calc(100dvh - 72px);
 }
 .hero-img.recorte .hero-foto {
-  top: 4%;
-  height: 52%;
+  top: 8%;
+  height: 68%;
 }
 .hero-img.recorte .hero-top {
   top: 1.5%;
