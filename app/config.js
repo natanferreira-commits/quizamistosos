@@ -145,10 +145,13 @@ export const config = {
   bilhete: {
     slipTitulo: "Bolão dos Amistosos",
     label: "Seu bilhete",
-    titulo: "Registra no WhatsApp pra valer",
-    subtitulo: "Sem registro o bilhete não conta. Aperta o botão que a mensagem já vai com o número do bilhete.",
-    ctaLabel: "Registrar no WhatsApp",
-    ctaHint: "Abre o WhatsApp com o número do seu bilhete",
+    titulo: "Valide seu palpite",
+    subtitulo: "",
+    ctaLabel: "Validar palpite",
+    ctaHint: "Guarda o número do bilhete pra conferir depois",
+    ctaValidadoLabel: "✓ Palpite validado",
+    validadoTitulo: "Palpite validado!",
+    validadoTexto: "Guarda o número do teu bilhete. Se cravar os 10, a gente entra em contato.",
     refazerLabel: "Refazer palpites",
   },
 

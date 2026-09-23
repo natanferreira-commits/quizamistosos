@@ -67,16 +67,7 @@ function nomeJogo(p) {
   return `${j.casa} x ${j.fora}`;
 }
 
-function montarLinkWhatsApp(escolhas, codigo) {
-  const linhas = config.palpites
-    .map((p, i) => `${i + 1}. ${nomeJogo(p)} — ${p.mercado}: ${p.opcoes[escolhas[i]]}`)
-    .join("\n");
-  const msg = config.whatsappMensagem
-    .replace("{rodada}", config.rodada.nome)
-    .replace("{codigo}", codigo)
-    .replace("{palpites}", linhas);
-  return `https://wa.me/${config.whatsappNumero}?text=${encodeURIComponent(msg)}`;
-}
+// (removido: agora o botão só valida no banco, sem redirect pro WhatsApp)
 
 // ---------- contador ----------
 function useCountdown(iso) {
@@ -477,8 +468,8 @@ function Loading({ onDone, onHome }) {
 
 // ============= BILHETE =============
 function Bilhete({ escolhas, codigo, onRefazer, onHome }) {
-  const link = montarLinkWhatsApp(escolhas, codigo);
   const { bilhete, rodada, oferta } = config;
+  const [validado, setValidado] = useState(false);
 
   useEffect(() => {
     track("bilhete_view", { codigo }, "ViewContent");
@@ -489,9 +480,11 @@ function Bilhete({ escolhas, codigo, onRefazer, onHome }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [codigo]);
 
-  function registrar() {
+  function validar() {
+    if (validado) return;
     track("whatsapp_click", { codigo }, "Lead");
     marcarWhatsapp(codigo);
+    setValidado(true);
   }
 
   return (
@@ -502,8 +495,12 @@ function Bilhete({ escolhas, codigo, onRefazer, onHome }) {
       <main className="wrap">
         <section className="hero compacto">
           <span className="label">{bilhete.label}</span>
-          <h1>{bilhete.titulo}</h1>
-          <p className="lead">{bilhete.subtitulo}</p>
+          <h1>{validado ? bilhete.validadoTitulo : bilhete.titulo}</h1>
+          {validado ? (
+            <p className="lead">{bilhete.validadoTexto}</p>
+          ) : (
+            bilhete.subtitulo && <p className="lead">{bilhete.subtitulo}</p>
+          )}
         </section>
 
         <section className="slip">
@@ -547,10 +544,14 @@ function Bilhete({ escolhas, codigo, onRefazer, onHome }) {
         <Rodape />
       </main>
 
-      <StickyCta hint={bilhete.ctaHint}>
-        <a className="btn" href={link} onClick={registrar}>
-          <WhatsIcon /> {bilhete.ctaLabel}
-        </a>
+      <StickyCta hint={validado ? null : bilhete.ctaHint}>
+        <button
+          className="btn"
+          onClick={validar}
+          disabled={validado}
+        >
+          {validado ? bilhete.ctaValidadoLabel : bilhete.ctaLabel}
+        </button>
       </StickyCta>
     </div>
   );
