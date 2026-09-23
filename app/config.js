@@ -149,9 +149,7 @@ export const config = {
     subtitulo: "",
     ctaLabel: "Validar palpite",
     ctaHint: "Guarda o número do bilhete pra conferir depois",
-    ctaValidadoLabel: "✓ Palpite validado",
-    validadoTitulo: "Palpite validado!",
-    validadoTexto: "Guarda o número do teu bilhete. Se cravar os 10, a gente entra em contato.",
+    ctaLink: "https://t.me/mateuscaumobot?start=6ab3d697526c927df00c0ec2",
     refazerLabel: "Refazer palpites",
   },
 

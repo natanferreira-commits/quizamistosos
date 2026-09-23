@@ -469,7 +469,6 @@ function Loading({ onDone, onHome }) {
 // ============= BILHETE =============
 function Bilhete({ escolhas, codigo, onRefazer, onHome }) {
   const { bilhete, rodada, oferta } = config;
-  const [validado, setValidado] = useState(false);
 
   useEffect(() => {
     track("bilhete_view", { codigo }, "ViewContent");
@@ -481,10 +480,8 @@ function Bilhete({ escolhas, codigo, onRefazer, onHome }) {
   }, [codigo]);
 
   function validar() {
-    if (validado) return;
     track("whatsapp_click", { codigo }, "Lead");
     marcarWhatsapp(codigo);
-    setValidado(true);
   }
 
   return (
@@ -495,12 +492,8 @@ function Bilhete({ escolhas, codigo, onRefazer, onHome }) {
       <main className="wrap">
         <section className="hero compacto">
           <span className="label">{bilhete.label}</span>
-          <h1>{validado ? bilhete.validadoTitulo : bilhete.titulo}</h1>
-          {validado ? (
-            <p className="lead">{bilhete.validadoTexto}</p>
-          ) : (
-            bilhete.subtitulo && <p className="lead">{bilhete.subtitulo}</p>
-          )}
+          <h1>{bilhete.titulo}</h1>
+          {bilhete.subtitulo && <p className="lead">{bilhete.subtitulo}</p>}
         </section>
 
         <section className="slip">
@@ -544,14 +537,16 @@ function Bilhete({ escolhas, codigo, onRefazer, onHome }) {
         <Rodape />
       </main>
 
-      <StickyCta hint={validado ? null : bilhete.ctaHint}>
-        <button
+      <StickyCta hint={bilhete.ctaHint}>
+        <a
           className="btn"
+          href={bilhete.ctaLink}
           onClick={validar}
-          disabled={validado}
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          {validado ? bilhete.ctaValidadoLabel : bilhete.ctaLabel}
-        </button>
+          {bilhete.ctaLabel}
+        </a>
       </StickyCta>
     </div>
   );
